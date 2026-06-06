@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Night — Evey's Bach 🎬</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursor-trail"></div>
+  <div id="sparkles"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">🌸 Evey's Bach</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="itinerary.html">Itinerary</a>
+        <a href="friday.html">Friday</a>
+        <a href="saturday.html">Saturday</a>
+        <a href="sunday.html">Sunday</a>
+        <a href="guests.html">The Girls</a>
+        <a href="packing.html">What to Bring</a>
+        <a href="movies.html" class="active">Movie Night</a>
+        <a href="menu.html">Snacks & Eats</a>
+      </div>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="itinerary.html">Itinerary</a>
+      <a href="friday.html">Friday</a>
+      <a href="saturday.html">Saturday</a>
+      <a href="sunday.html">Sunday</a>
+      <a href="guests.html">The Girls</a>
+      <a href="packing.html">What to Bring</a>
+      <a href="movies.html">Movie Night</a>
+      <a href="menu.html">Snacks & Eats</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-container">
+      <h1 class="page-title">Movie Night 🎬</h1>
+      <p class="page-subtitle">Vote for your favorites — most votes wins the queue! ✦ Click to vote ✦</p>
+
+      <div class="vibe-banner-inline">
+        <span>✦ PJs on</span>
+        <span>✦ snacks out</span>
+        <span>✦ crafts ready</span>
+        <span>✦ movies loading</span>
+      </div>
+
+      <h2 class="section-heading">🍿 Vote for a Movie</h2>
+      <p style="font-family:var(--font-body); font-size:0.9rem; opacity:0.7; text-align:center; margin-bottom:20px;">
+        Tap a card to vote! Votes save in your browser.
+      </p>
+
+      <div class="movie-grid">
+
+        <!-- Horror / Thriller (for Evey who loves horror!) -->
+        <div class="movie-card" data-id="hereditary">
+          <span class="movie-emoji">😱</span>
+          <div class="movie-title">Hereditary</div>
+          <div class="movie-genre">Horror</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <div class="movie-card" data-id="midsommar">
+          <span class="movie-emoji">🌸</span>
+          <div class="movie-title">Midsommar</div>
+          <div class="movie-genre">Folk Horror</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <div class="movie-card" data-id="get-out">
+          <span class="movie-emoji">🏡</span>
+          <div class="movie-title">Get Out</div>
+          <div class="movie-genre">Horror / Thriller</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <div class="movie-card" data-id="the-menu">
+          <span class="movie-emoji">🍽️</span>
+          <div class="movie-title">The Menu</div>
+          <div class="movie-genre">Dark Comedy / Thriller</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <!-- Romance / Comedy options -->
+        <div class="movie-card" data-id="bridesmaids">
+          <span class="movie-emoji">💐</span>
+          <div class="movie-title">Bridesmaids</div>
+          <div class="movie-genre">Rom-Com / Bach Classic</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <div class="movie-card" data-id="mean-girls">
+          <span class="movie-emoji">💅</span>
+          <div class="movie-title">Mean Girls</div>
+          <div class="movie-genre">Classic Comedy</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <div class="movie-card" data-id="knives-out">
+          <span class="movie-emoji">🔪</span>
+          <div class="movie-title">Knives Out</div>
+          <div class="movie-genre">Mystery / Comedy</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <div class="movie-card" data-id="parasite">
+          <span class="movie-emoji">🏠</span>
+          <div class="movie-title">Parasite</div>
+          <div class="movie-genre">Thriller / Dark Comedy</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <div class="movie-card" data-id="clueless">
+          <span class="movie-emoji">🛍️</span>
+          <div class="movie-title">Clueless</div>
+          <div class="movie-genre">90s Classic</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <div class="movie-card" data-id="spirited-away">
+          <span class="movie-emoji">🌊</span>
+          <div class="movie-title">Spirited Away</div>
+          <div class="movie-genre">Anime / Studio Ghibli</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <div class="movie-card" data-id="princess-mononoke">
+          <span class="movie-emoji">🐺</span>
+          <div class="movie-title">Princess Mononoke</div>
+          <div class="movie-genre">Anime / Studio Ghibli</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+        <div class="movie-card" data-id="howls">
+          <span class="movie-emoji">🔥</span>
+          <div class="movie-title">Howl's Moving Castle</div>
+          <div class="movie-genre">Anime / Studio Ghibli</div>
+          <span class="vote-count">0 votes</span>
+        </div>
+
+      </div>
+
+      <!-- Suggest a movie -->
+      <div class="movie-suggest">
+        <p class="suggest-title">🎥 Suggest a Movie!</p>
+        <p style="font-family:var(--font-body); font-size:0.9rem; opacity:0.7; margin-bottom:14px;">
+          Don't see your pick? Add it here!
+        </p>
+        <input type="text" id="movie-suggest-input" class="suggest-input" placeholder="Movie title..." maxlength="60">
+        <button id="movie-suggest-btn" class="btn-pink">Add my suggestion ✦</button>
+      </div>
+
+      <!-- Suggested movies render here -->
+      <div id="suggested-movies" class="movie-grid"></div>
+
+      <div class="tip-card">
+        <p class="tip-label">🎬 Movie Night Setup</p>
+        <ul class="tip-list">
+          <li>Saturday evening after we're back from Kensington &amp; pizza 🍕</li>
+          <li>PJs required, crafts optional (but encouraged!)</li>
+          <li>Full snack spread — check the <a href="menu.html">Snacks menu</a>!</li>
+          <li>The most-voted movie goes first. We might fit 2 if we're night owls! 🦉</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>made with ♡ for Evey's bach weekend 2025</footer>
+  <script src="main.js"></script>
+</body>
+</html>

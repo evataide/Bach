@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snacks & Eats — Evey's Bach 🍕</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursor-trail"></div>
+  <div id="sparkles"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">🌸 Evey's Bach</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="itinerary.html">Itinerary</a>
+        <a href="friday.html">Friday</a>
+        <a href="saturday.html">Saturday</a>
+        <a href="sunday.html">Sunday</a>
+        <a href="guests.html">The Girls</a>
+        <a href="packing.html">What to Bring</a>
+        <a href="movies.html">Movie Night</a>
+        <a href="menu.html" class="active">Snacks & Eats</a>
+      </div>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="itinerary.html">Itinerary</a>
+      <a href="friday.html">Friday</a>
+      <a href="saturday.html">Saturday</a>
+      <a href="sunday.html">Sunday</a>
+      <a href="guests.html">The Girls</a>
+      <a href="packing.html">What to Bring</a>
+      <a href="movies.html">Movie Night</a>
+      <a href="menu.html">Snacks & Eats</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-container">
+      <h1 class="page-title">Snacks & Eats 🍕</h1>
+      <p class="page-subtitle">The full food lineup for the weekend ✦</p>
+
+      <div class="wavy-divider">🌸 ✦ 🌸 ✦ 🌸</div>
+
+      <!-- Friday Patio -->
+      <div class="menu-section">
+        <div class="menu-section-title">🌙 Friday Patio Spread</div>
+        <p class="menu-note">Our welcome spread for the whole crew — sip, snack, celebrate!</p>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <span class="menu-item-emoji">🥂</span>
+            <div class="menu-item-name">Prosecco & Rosé</div>
+            <div class="menu-item-note">Bubbles to start the party</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🍹</span>
+            <div class="menu-item-name">Signature Cocktail</div>
+            <div class="menu-item-note">TBD — something pink & fabulous</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🧃</span>
+            <div class="menu-item-name">Non-Alcoholic Options</div>
+            <div class="menu-item-note">Sparkling water, lemonade, mocktails</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🧀</span>
+            <div class="menu-item-name">Charcuterie Board</div>
+            <div class="menu-item-note">Cheeses, meats, crackers, fruits</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🫒</span>
+            <div class="menu-item-name">Mezze & Dips</div>
+            <div class="menu-item-note">Hummus, olives, veggies</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🍓</span>
+            <div class="menu-item-name">Fresh Fruit</div>
+            <div class="menu-item-note">Seasonal summer fruits</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🥨</span>
+            <div class="menu-item-name">Savory Bites</div>
+            <div class="menu-item-note">Chips, pretzels, mixed nuts</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🍫</span>
+            <div class="menu-item-name">Sweet Treats</div>
+            <div class="menu-item-note">Chocolate, cookies, something special</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wavy-divider">~ ~ ~ ~ ~</div>
+
+      <!-- Saturday Breakfast -->
+      <div class="menu-section">
+        <div class="menu-section-title">🥐 Saturday Light Breakfast</div>
+        <p class="menu-note">Fuel up before the Kensington adventure!</p>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <span class="menu-item-emoji">☕</span>
+            <div class="menu-item-name">Coffee Bar</div>
+            <div class="menu-item-note">Drip coffee, cold brew, cream & sugar</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🫖</span>
+            <div class="menu-item-name">Tea Selection</div>
+            <div class="menu-item-note">Various herbal & black teas</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🥐</span>
+            <div class="menu-item-name">Pastries</div>
+            <div class="menu-item-note">Croissants, muffins, danishes</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🍌</span>
+            <div class="menu-item-name">Fresh Fruit</div>
+            <div class="menu-item-note">Yogurt parfait option too!</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🥚</span>
+            <div class="menu-item-name">Scrambled Eggs</div>
+            <div class="menu-item-note">Simple, warm, perfect</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🍞</span>
+            <div class="menu-item-name">Toast & Spreads</div>
+            <div class="menu-item-note">Butter, jam, avocado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wavy-divider">~ ~ ~ ~ ~</div>
+
+      <!-- Saturday Lunch -->
+      <div class="menu-section">
+        <div class="menu-section-title">🍕 Saturday Lunch — Frankly… Pizza</div>
+        <p class="menu-note">Late pizza lunch in Kensington — the whole crew!</p>
+        <div class="restaurant-card">
+          <div class="restaurant-name">Frankly… Pizza</div>
+          <div class="restaurant-detail">📍 Howard Avenue, Kensington, MD</div>
+          <div class="restaurant-detail">🍕 Amazing Neapolitan-style pizza</div>
+          <div class="restaurant-detail">👥 Group-friendly — we'll share a bunch of pies!</div>
+        </div>
+      </div>
+
+      <div class="wavy-divider">~ ~ ~ ~ ~</div>
+
+      <!-- Movie Night Snacks -->
+      <div class="menu-section">
+        <div class="menu-section-title">🎬 Saturday Movie Night Snacks</div>
+        <p class="menu-note">The sleepover snack spread — because every movie is better with snacks</p>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <span class="menu-item-emoji">🍿</span>
+            <div class="menu-item-name">Popcorn</div>
+            <div class="menu-item-note">Multiple flavors, obviously</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🍫</span>
+            <div class="menu-item-name">Movie Candy</div>
+            <div class="menu-item-note">Gummies, chocolate, you name it</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🧁</span>
+            <div class="menu-item-name">Bachelorette Cupcakes</div>
+            <div class="menu-item-note">Pink frosting, obviously 🌸</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🥤</span>
+            <div class="menu-item-name">Drinks</div>
+            <div class="menu-item-note">Wine, sparkling water, sodas</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🧇</span>
+            <div class="menu-item-name">Late Night Snacks</div>
+            <div class="menu-item-note">For the night owls 🦉</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🍓</span>
+            <div class="menu-item-name">Chocolate Covered Strawberries</div>
+            <div class="menu-item-note">Fancy but easy 💅</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wavy-divider">~ ~ ~ ~ ~</div>
+
+      <!-- Sunday Breakfast -->
+      <div class="menu-section">
+        <div class="menu-section-title">☕ Sunday Casual Breakfast</div>
+        <p class="menu-note">Slow morning, good coffee, good people</p>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <span class="menu-item-emoji">☕</span>
+            <div class="menu-item-name">More Coffee!</div>
+            <div class="menu-item-note">We'll need it after Saturday 😄</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🥞</span>
+            <div class="menu-item-name">Pancakes or French Toast</div>
+            <div class="menu-item-note">The proper sunday treat</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🍳</span>
+            <div class="menu-item-name">Eggs to Order</div>
+            <div class="menu-item-note">Scrambled, fried, whatever you like!</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🥓</span>
+            <div class="menu-item-name">Bacon & Sausage</div>
+            <div class="menu-item-note">Because we deserve it</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🍊</span>
+            <div class="menu-item-name">Fresh OJ</div>
+            <div class="menu-item-note">Freshly squeezed if we're feeling fancy</div>
+          </div>
+          <div class="menu-item">
+            <span class="menu-item-emoji">🫐</span>
+            <div class="menu-item-name">Fruit & Yogurt</div>
+            <div class="menu-item-note">For the health-conscious ✨</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <p class="tip-label">🌿 Dietary Needs</p>
+        <p style="font-family:var(--font-body); font-size:0.95rem; line-height:1.6; color:var(--red-dark);">
+          Have any dietary restrictions or allergies? Please let Evey know ahead of time 
+          so we can make sure there's something delicious for everyone! 
+          We want everyone well-fed and happy 🌸
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>made with ♡ for Evey's bach weekend 2025</footer>
+  <script src="main.js"></script>
+</body>
+</html>

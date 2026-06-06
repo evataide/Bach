@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What to Bring — Evey's Bach 🎒</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursor-trail"></div>
+  <div id="sparkles"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">🌸 Evey's Bach</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="itinerary.html">Itinerary</a>
+        <a href="friday.html">Friday</a>
+        <a href="saturday.html">Saturday</a>
+        <a href="sunday.html">Sunday</a>
+        <a href="guests.html">The Girls</a>
+        <a href="packing.html" class="active">What to Bring</a>
+        <a href="movies.html">Movie Night</a>
+        <a href="menu.html">Snacks & Eats</a>
+      </div>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="itinerary.html">Itinerary</a>
+      <a href="friday.html">Friday</a>
+      <a href="saturday.html">Saturday</a>
+      <a href="sunday.html">Sunday</a>
+      <a href="guests.html">The Girls</a>
+      <a href="packing.html">What to Bring</a>
+      <a href="movies.html">Movie Night</a>
+      <a href="menu.html">Snacks & Eats</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="page-container">
+      <h1 class="page-title">What to Bring 🎒</h1>
+      <p class="page-subtitle">Your packing checklist for the weekend! Click items to check them off ✦</p>
+
+      <!-- Outfit Section -->
+      <div class="packing-section">
+        <div class="packing-section-title">👗 What to Wear</div>
+        <div class="outfit-callout">
+          <div class="outfit-day">
+            <span class="outfit-day-name">Friday Night</span>
+            <span class="outfit-desc">🌻 Farmer's Market Chic — flowy, fun, colorful! Think sundresses, linen, florals, straw hats. Effortlessly cute.</span>
+          </div>
+          <div class="outfit-day">
+            <span class="outfit-day-name">Saturday AM</span>
+            <span class="outfit-desc">🌿 Farmer's Market Chic continues — same vibe for the Kensington adventure! Comfy shoes are a MUST for Antique Row.</span>
+          </div>
+          <div class="outfit-day">
+            <span class="outfit-day-name">Saturday PM → Sunday</span>
+            <span class="outfit-desc">😴 Full PJ mode — your coziest, most adorable pajamas. Matching sets encouraged. The fluffier the better.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Essentials -->
+      <div class="packing-section">
+        <div class="packing-section-title">🌟 Essentials</div>
+        <div class="packing-grid">
+          <div class="packing-item" data-id="p1"><div class="packing-check"></div>Overnight bag</div>
+          <div class="packing-item" data-id="p2"><div class="packing-check"></div>Phone charger</div>
+          <div class="packing-item" data-id="p3"><div class="packing-check"></div>Any medications</div>
+          <div class="packing-item" data-id="p4"><div class="packing-check"></div>Metro card / cash</div>
+          <div class="packing-item" data-id="p5"><div class="packing-check"></div>ID & card</div>
+          <div class="packing-item" data-id="p6"><div class="packing-check"></div>Hair ties</div>
+        </div>
+      </div>
+
+      <!-- Clothes -->
+      <div class="packing-section">
+        <div class="packing-section-title">👗 Clothes</div>
+        <div class="packing-grid">
+          <div class="packing-item" data-id="c1"><div class="packing-check"></div>Farmer's Market Chic outfit</div>
+          <div class="packing-item" data-id="c2"><div class="packing-check"></div>Your cutest PJs 😴</div>
+          <div class="packing-item" data-id="c3"><div class="packing-check"></div>Comfy walking shoes</div>
+          <div class="packing-item" data-id="c4"><div class="packing-check"></div>Cozy socks</div>
+          <div class="packing-item" data-id="c5"><div class="packing-check"></div>Sunday casual outfit</div>
+          <div class="packing-item" data-id="c6"><div class="packing-check"></div>Sunglasses</div>
+          <div class="packing-item" data-id="c7"><div class="packing-check"></div>Light jacket / cardigan</div>
+          <div class="packing-item" data-id="c8"><div class="packing-check"></div>Tote bag for market finds</div>
+        </div>
+      </div>
+
+      <!-- Toiletries -->
+      <div class="packing-section">
+        <div class="packing-section-title">🧴 Toiletries</div>
+        <div class="packing-grid">
+          <div class="packing-item" data-id="t1"><div class="packing-check"></div>Toothbrush & paste</div>
+          <div class="packing-item" data-id="t2"><div class="packing-check"></div>Face wash / skincare</div>
+          <div class="packing-item" data-id="t3"><div class="packing-check"></div>Makeup (if you want!)</div>
+          <div class="packing-item" data-id="t4"><div class="packing-check"></div>Sunscreen ☀️</div>
+          <div class="packing-item" data-id="t5"><div class="packing-check"></div>Deodorant</div>
+          <div class="packing-item" data-id="t6"><div class="packing-check"></div>Hair brush / products</div>
+        </div>
+      </div>
+
+      <!-- Fun Extras -->
+      <div class="packing-section">
+        <div class="packing-section-title">✨ Fun Extras (Optional but encouraged!)</div>
+        <div class="packing-grid">
+          <div class="packing-item" data-id="f1"><div class="packing-check"></div>A craft or art supply to share</div>
+          <div class="packing-item" data-id="f2"><div class="packing-check"></div>Polaroid camera 📷</div>
+          <div class="packing-item" data-id="f3"><div class="packing-check"></div>A snack to contribute 🍫</div>
+          <div class="packing-item" data-id="f4"><div class="packing-check"></div>Face mask / sheet mask</div>
+          <div class="packing-item" data-id="f5"><div class="packing-check"></div>A little gift for Evey 💝</div>
+          <div class="packing-item" data-id="f6"><div class="packing-check"></div>Your best movie suggestion</div>
+          <div class="packing-item" data-id="f7"><div class="packing-check"></div>Good vibes only ✨</div>
+          <div class="packing-item" data-id="f8"><div class="packing-check"></div>A funny story to share</div>
+        </div>
+      </div>
+
+      <div class="tip-card" style="margin-top: 20px;">
+        <p class="tip-label">💌 Note from Evey</p>
+        <p style="font-family:var(--font-body); font-size:0.95rem; line-height:1.6; color:var(--red-dark);">
+          Don't stress about being perfectly packed — we'll have everything at the house! 
+          The only thing you truly need is yourself and your most festive energy 🌸 
+          Can't wait to celebrate this weekend with you!
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>made with ♡ for Evey's bach weekend 2025</footer>
+  <script src="main.js"></script>
+</body>
+</html>
