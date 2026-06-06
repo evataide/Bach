@@ -3,6 +3,8 @@
    Pink & Red, Whimsical, 2000s-meets-cottagecore
    ============================================ */
 
+@import url('https://cdn.cursors-4u.net/cursors/animated/cute-spinning-flower-pink-629aca61-32.css');
+
 :root {
   --pink: #FFD6E0;
   --pink-mid: #FFB3C6;
@@ -25,7 +27,7 @@ body {
   background-color: var(--pink);
   color: var(--red);
   font-family: var(--font-body);
-  cursor: none;
+  /* cursor: url('https://cdn.cursors-4u.net/previews/cute-bunny-holding-heart-8aaf3d52-32.webp') 0 0, auto !important; */
   overflow-x: hidden;
   min-height: 100vh;
 }
@@ -43,30 +45,7 @@ body::before {
 }
 
 /* ======== CUSTOM CURSOR ======== */
-.cursor {
-  font-size: 24px;
-  line-height: 1;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease, font-size 0.2s;
-  user-select: none;
-}
-
-.cursor-trail {
-  font-size: 16px;
-  line-height: 1;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: all 0.15s ease;
-  opacity: 0.4;
-  user-select: none;
-}
-
-body:hover .cursor { opacity: 1; }
+.cursor, .cursor-trail { display: none; }
 
 /* sparkles */
 .sparkle {
@@ -117,7 +96,7 @@ nav {
   display: flex;
   gap: 4px;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .nav-links a {
@@ -130,6 +109,9 @@ nav {
   border-radius: 20px;
   white-space: nowrap;
   transition: background 0.2s, color 0.2s;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  will-change: background-color;
 }
 
 .nav-links a:hover, .nav-links a.active {

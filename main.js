@@ -36,12 +36,12 @@ animateTrail();
 // Cursor hover effects
 document.querySelectorAll('a, button, .nav-card, .movie-card, .packing-item, .guest-card').forEach(el => {
   el.addEventListener('mouseenter', () => {
-    if (cursor) cursor.style.fontSize = '32px';
-    if (trail) trail.style.fontSize = '22px';
+    if (cursor) { cursor.style.width = '30px'; cursor.style.height = '30px'; }
+    if (trail) { trail.style.width = '50px'; trail.style.height = '50px'; }
   });
   el.addEventListener('mouseleave', () => {
-    if (cursor) cursor.style.fontSize = '24px';
-    if (trail) trail.style.fontSize = '16px';
+    if (cursor) { cursor.style.width = '20px'; cursor.style.height = '20px'; }
+    if (trail) { trail.style.width = '36px'; trail.style.height = '36px'; }
   });
 });
 
