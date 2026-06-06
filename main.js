@@ -69,6 +69,25 @@ function createSparkle(x, y) {
   setTimeout(() => s.remove(), 800);
 }
 
+// ---- FALLING PETALS ----
+const petalEmojis = ['🌸', '♡', '🌸', '🌸', '♡'];
+
+function spawnPetal() {
+  const petal = document.createElement('div');
+  petal.className = 'petal';
+  petal.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+  const size = 14 + Math.random() * 16;
+  const duration = 5 + Math.random() * 8;
+  const delay = Math.random() * -duration;
+  petal.style.left = (Math.random() * 100) + 'vw';
+  petal.style.fontSize = size + 'px';
+  petal.style.animationDuration = duration + 's';
+  petal.style.animationDelay = delay + 's';
+  document.body.appendChild(petal);
+}
+
+for (let i = 0; i < 18; i++) spawnPetal();
+
 // ---- MOBILE NAV ----
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');

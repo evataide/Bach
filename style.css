@@ -3,7 +3,7 @@
    Pink & Red, Whimsical, 2000s-meets-cottagecore
    ============================================ */
 
-@import url('https://cdn.cursors-4u.net/cursors/animated/cute-spinning-flower-pink-629aca61-32.css');
+@import url('https://cdn.cursors-4u.net/cursors/animated/slapping-cat-1348ecde-128.css');
 
 :root {
   --pink: #FFD6E0;
@@ -765,6 +765,21 @@ main {
   font-size: 0.8rem;
   opacity: 0.7;
   margin-top: 4px;
+}
+
+/* ======== FALLING PETALS ======== */
+.petal {
+  position: fixed;
+  top: -40px;
+  pointer-events: none;
+  z-index: 9996;
+  animation: petal-fall linear infinite;
+  opacity: 0.75;
+}
+
+@keyframes petal-fall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
 /* ======== ANIMATIONS ======== */
