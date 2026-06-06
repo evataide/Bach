@@ -240,8 +240,6 @@ main {
 
 /* vibes marquee */
 .vibes-banner {
-  display: flex;
-  gap: 32px;
   overflow: hidden;
   width: 100vw;
   background: var(--red);
@@ -250,15 +248,20 @@ main {
   font-size: 1.2rem;
   padding: 10px 0;
   margin: 24px 0;
+}
+.vibes-track {
+  display: flex;
+  gap: 32px;
   white-space: nowrap;
   animation: marquee 18s linear infinite;
 }
-.vibes-banner span { flex-shrink: 0; padding: 0 24px; }
+.vibes-track span { flex-shrink: 0; padding: 0 24px; }
 
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
 
 .dress-code-card {
   background: rgba(255,255,255,0.7);
