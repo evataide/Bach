@@ -6,15 +6,304 @@
   <title>Evey's Bach Weekend 🌸</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;1,400&family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== INDEX-ONLY OVERRIDES ===== */
+    body { background: #FFCFE0; }
+
+    .hero-page {
+      padding-top: 56px; /* nav height */
+      min-height: 100vh;
+      background: #FFCFE0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ---- TOP SECTION (above the fold) ---- */
+    .hero-top {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 28px 24px 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Bunting flags top-left */
+    .svg-bunting {
+      position: absolute;
+      left: -10px;
+      top: 18px;
+      width: 140px;
+    }
+
+    /* "YOU'RE INVITED TO" arc top-right */
+    .svg-invited {
+      position: absolute;
+      right: 0px;
+      top: 10px;
+      width: 110px;
+    }
+
+    /* Scattered stars top-left area */
+    .svg-stars-tl {
+      position: absolute;
+      left: 60px;
+      top: 60px;
+      width: 60px;
+    }
+
+    /* Ring/flower top-left below stars */
+    .svg-ring {
+      position: absolute;
+      left: 24px;
+      top: 155px;
+      width: 52px;
+    }
+
+    /* Hearts right side */
+    .svg-hearts-tr {
+      position: absolute;
+      right: 16px;
+      top: 80px;
+      width: 44px;
+    }
+
+    /* Small heart middle-left */
+    .svg-heart-mid {
+      position: absolute;
+      left: 38%;
+      top: 220px;
+      width: 18px;
+    }
+
+    /* Star clusters mid */
+    .svg-stars-mid {
+      position: absolute;
+      left: 18%;
+      top: 240px;
+      width: 50px;
+    }
+
+    /* ---- TITLE ---- */
+    .hero-title-block {
+      text-align: center;
+      margin-top: 10px;
+      line-height: 0.88;
+      position: relative;
+      z-index: 2;
+    }
+    .ht-eveys {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(4.2rem, 14vw, 7.8rem);
+      font-weight: 700;
+      color: #B5002A;
+      display: block;
+      letter-spacing: -1px;
+    }
+    .ht-bach {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(5rem, 17vw, 9.5rem);
+      font-weight: 700;
+      color: #B5002A;
+      display: block;
+      margin-top: -8px;
+    }
+    .ht-weekend {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(4.2rem, 14vw, 7.8rem);
+      font-weight: 700;
+      color: #B5002A;
+      display: block;
+      margin-top: -8px;
+    }
+
+    /* ---- CHAMPAGNE ILLUSTRATION area ---- */
+    /* This sits to the RIGHT of the title, overlapping */
+    .hero-illustration-wrap {
+      width: 100%;
+      max-width: 680px;
+      position: relative;
+      margin-top: -40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .svg-champagne {
+      width: min(420px, 90vw);
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* ---- DETAILS (left column) overlapping the illustration ---- */
+    .hero-details-block {
+      position: relative;
+      width: 100%;
+      max-width: 680px;
+      padding: 0 24px;
+      margin-top: -80px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 12px;
+      z-index: 4;
+    }
+
+    .details-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .detail-when {
+      font-family: 'Caveat', cursive;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #B5002A;
+      line-height: 1.2;
+    }
+    .detail-address {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.9rem;
+      color: #B5002A;
+      line-height: 1.4;
+    }
+    .detail-start-label {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.9rem;
+      color: #B5002A;
+      margin-top: 8px;
+    }
+    .detail-time {
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-style: italic;
+      color: #B5002A;
+      line-height: 1;
+    }
+    .detail-dresscode {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.85rem;
+      color: #B5002A;
+      line-height: 1.4;
+      margin-top: 8px;
+    }
+
+    /* RSVP block - right side */
+    .rsvp-block {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .rsvp-label {
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #B5002A;
+      display: block;
+    }
+    .rsvp-sub {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.82rem;
+      color: #B5002A;
+      line-height: 1.4;
+    }
+    .rsvp-link {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.8rem;
+      color: #B5002A;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+
+    /* ---- FOOTER strip ---- */
+    .hero-footer-strip {
+      width: 100%;
+      max-width: 680px;
+      padding: 24px 24px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      position: relative;
+      z-index: 3;
+    }
+    .hf-comfy {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.85rem;
+      color: #B5002A;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hf-love {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.85rem;
+      color: #B5002A;
+    }
+    .hf-evey {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.85rem;
+      color: #B5002A;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ---- BOTTOM NAV LINKS ---- */
+    .bottom-nav-links {
+      width: 100%;
+      background: #B5002A;
+      padding: 20px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 20px;
+    }
+    .bottom-nav-links a {
+      font-family: 'Caveat', cursive;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #FFCFE0;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .bottom-nav-links a:hover { opacity: 0.7; }
+    .bottom-nav-sep {
+      color: #FFCFE0;
+      opacity: 0.4;
+      font-size: 1rem;
+    }
+
+    /* ---- SVG INLINE STYLES ---- */
+    svg .doodle-stroke {
+      fill: none;
+      stroke: #B5002A;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    svg .doodle-fill {
+      fill: #B5002A;
+    }
+
+    @media (max-width: 500px) {
+      .hero-details-block { flex-direction: column; align-items: flex-start; margin-top: -20px; }
+      .rsvp-block { text-align: left; }
+      .svg-champagne { margin-top: 0; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Custom cursor -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-trail" id="cursor-trail"></div>
-  <!-- Sparkle container -->
   <div id="sparkles"></div>
 
-  <!-- Nav -->
+  <!-- NAV (kept from original) -->
   <nav>
     <div class="nav-inner">
       <span class="nav-logo">🌸 Evey's Bach</span>
@@ -44,79 +333,273 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <main class="hero-page">
-    <div class="doodle doodle-banner">🎀🎀🎀</div>
-    <div class="doodle doodle-stars-tl">✦ ✧ ✦</div>
-    <div class="doodle doodle-hearts-tr">♡ ♥ ♡</div>
 
-    <div class="hero-content">
-      <p class="you-are-invited">you're invited to ✨</p>
-      <h1 class="hero-title">
-        <span class="title-line1">Evey's</span>
-        <span class="title-line2">Bach</span>
-        <span class="title-line3">Weekend</span>
-      </h1>
-      <div class="champagne-doodle">🥂</div>
-    </div>
+    <!-- TOP SECTION -->
+    <div class="hero-top">
 
-    <div class="hero-details">
-      <div class="detail-card float-1">
-        <p class="detail-label">when</p>
-        <p class="detail-value">July 18–20, 2025</p>
+      <!-- BUNTING top-left -->
+      <svg class="svg-bunting" viewBox="0 0 140 55" xmlns="http://www.w3.org/2000/svg">
+        <!-- string -->
+        <path d="M5 15 Q35 5 70 18 Q105 30 135 12" class="doodle-stroke" stroke-width="1.8"/>
+        <!-- flags -->
+        <polygon points="14,17 24,17 19,35" class="doodle-fill" opacity="0.85"/>
+        <polygon points="27,14 37,14 32,32" class="doodle-fill" opacity="0.85"/>
+        <polygon points="40,13 50,13 45,31" class="doodle-fill" opacity="0.85"/>
+        <polygon points="55,16 65,16 60,34" class="doodle-fill" opacity="0.85"/>
+        <polygon points="70,18 80,18 75,36" class="doodle-fill" opacity="0.85"/>
+        <polygon points="86,20 96,20 91,38" class="doodle-fill" opacity="0.85"/>
+        <polygon points="102,17 112,17 107,35" class="doodle-fill" opacity="0.85"/>
+        <polygon points="117,14 127,14 122,32" class="doodle-fill" opacity="0.85"/>
+      </svg>
+
+      <!-- YOU'RE INVITED TO arc top-right -->
+      <svg class="svg-invited" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="arc" d="M10,65 A55,55 0 0,1 110,65"/>
+        </defs>
+        <text font-family="Quicksand,sans-serif" font-size="10.5" font-weight="600" fill="#B5002A" letter-spacing="1.5">
+          <textPath href="#arc">YOU'RE INVITED TO</textPath>
+        </text>
+        <!-- lipstick kiss mark -->
+        <g transform="translate(50,52) scale(0.9)">
+          <ellipse cx="0" cy="0" rx="14" ry="8" fill="#B5002A" opacity="0.9"/>
+          <path d="M-14,0 Q-7,-7 0,-4 Q7,-7 14,0" fill="#FFCFE0" opacity="0.9"/>
+        </g>
+      </svg>
+
+      <!-- Stars top-left -->
+      <svg class="svg-stars-tl" viewBox="0 0 60 55" xmlns="http://www.w3.org/2000/svg">
+        <g class="doodle-stroke" stroke-width="1.5" fill="none">
+          <!-- 4-point star -->
+          <path d="M30,5 L33,22 L50,22 L37,32 L41,48 L30,38 L19,48 L23,32 L10,22 L27,22 Z" stroke-width="1.2"/>
+          <!-- small star -->
+          <path d="M52,8 L53.5,14 L60,14 L55,18 L57,24 L52,20 L47,24 L49,18 L44,14 L50.5,14 Z" stroke-width="1"/>
+          <!-- tiny star -->
+          <path d="M8,35 L9,39 L13,39 L10,41.5 L11,46 L8,43.5 L5,46 L6,41.5 L3,39 L7,39 Z" stroke-width="0.8"/>
+        </g>
+      </svg>
+
+      <!-- Ring/flower ornament left -->
+      <svg class="svg-ring" viewBox="0 0 55 55" xmlns="http://www.w3.org/2000/svg">
+        <!-- flower petals -->
+        <g fill="none" stroke="#B5002A" stroke-width="1.8" stroke-linecap="round">
+          <ellipse cx="27" cy="15" rx="7" ry="11" transform="rotate(0 27 27)"/>
+          <ellipse cx="27" cy="15" rx="7" ry="11" transform="rotate(60 27 27)"/>
+          <ellipse cx="27" cy="15" rx="7" ry="11" transform="rotate(120 27 27)"/>
+        </g>
+        <circle cx="27" cy="27" r="6" fill="none" stroke="#B5002A" stroke-width="1.8"/>
+        <circle cx="27" cy="27" r="2.5" fill="#B5002A"/>
+      </svg>
+
+      <!-- Hearts cluster top-right -->
+      <svg class="svg-hearts-tr" viewBox="0 0 44 70" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#B5002A">
+          <!-- large heart -->
+          <path d="M22,28 C22,28 8,18 8,10 C8,5 12,2 16,4 C18,5 20,7 22,10 C24,7 26,5 28,4 C32,2 36,5 36,10 C36,18 22,28 22,28Z" opacity="0.9"/>
+          <!-- small hollow heart top -->
+          <path d="M30,10 C30,10 24,5 24,2 C24,0.5 25.5,0 27,1 C28,1.5 29,2.5 30,4 C31,2.5 32,1.5 33,1 C34.5,0 36,0.5 36,2 C36,5 30,10 30,10Z" opacity="0.6"/>
+          <!-- small heart bottom-right -->
+          <path d="M36,48 C36,48 30,43 30,40 C30,38.5 31.5,38 33,39 C34,39.5 35,40.5 36,42 C37,40.5 38,39.5 39,39 C40.5,38 42,38.5 42,40 C42,43 36,48 36,48Z" opacity="0.7"/>
+        </g>
+        <!-- outline heart -->
+        <path d="M10,60 C10,60 2,54 2,50 C2,48 3.5,47 5,48 C6.5,48.5 8,50 10,52 C12,50 13.5,48.5 15,48 C16.5,47 18,48 18,50 C18,54 10,60 10,60Z" fill="none" stroke="#B5002A" stroke-width="1.5"/>
+      </svg>
+
+      <!-- Star burst mid-left -->
+      <svg class="svg-stars-mid" viewBox="0 0 55 35" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#B5002A" stroke-width="1.3" stroke-linecap="round">
+          <path d="M27,3 L28.5,13 L38,13 L30,19 L33,29 L27,23 L21,29 L24,19 L16,13 L25.5,13 Z"/>
+          <path d="M48,5 L49,10 L54,10 L50,13 L51.5,18 L48,15 L44.5,18 L46,13 L42,10 L47,10 Z"/>
+        </g>
+      </svg>
+
+      <!-- Small heart mid -->
+      <svg class="svg-heart-mid" viewBox="0 0 20 18" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10,14 C10,14 2,8 2,4 C2,1.5 4,0 6,1.5 C7.5,2 9,4 10,6 C11,4 12.5,2 14,1.5 C16,0 18,1.5 18,4 C18,8 10,14 10,14Z" fill="#B5002A" opacity="0.8"/>
+      </svg>
+
+      <!-- TITLE -->
+      <div class="hero-title-block">
+        <span class="ht-eveys">Evey's</span>
+        <span class="ht-bach">Bach</span>
+        <span class="ht-weekend">Weekend</span>
       </div>
-      <div class="detail-card float-2">
-        <p class="detail-label">where</p>
-        <p class="detail-value">Wheaton, MD</p>
+    </div>
+
+    <!-- CHAMPAGNE ILLUSTRATION -->
+    <div class="hero-illustration-wrap">
+      <svg class="svg-champagne" viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#B5002A" stroke-linecap="round" stroke-linejoin="round">
+
+          <!-- BOTTLE pouring from upper right -->
+          <g transform="translate(230, -10) rotate(-35)">
+            <!-- bottle body -->
+            <rect x="15" y="0" width="32" height="95" rx="10" stroke-width="2.5"/>
+            <!-- bottle neck -->
+            <rect x="20" y="-35" width="22" height="42" rx="6" stroke-width="2.5"/>
+            <!-- bottle top cap -->
+            <rect x="22" y="-50" width="18" height="18" rx="4" stroke-width="2.5" fill="#B5002A" opacity="0.3"/>
+            <!-- label line -->
+            <line x1="15" y1="40" x2="47" y2="40" stroke-width="1.5" opacity="0.5"/>
+            <line x1="15" y1="55" x2="47" y2="55" stroke-width="1.5" opacity="0.5"/>
+            <!-- wire cage suggestion -->
+            <path d="M20,-15 L20,5 M27,-15 L27,5 M34,-15 L34,5 M41,-15 L41,5" stroke-width="1" opacity="0.4"/>
+          </g>
+
+          <!-- LIQUID STREAM pouring -->
+          <path d="M280,60 Q290,100 275,130 Q265,155 270,180" stroke-width="3" stroke="#B5002A" opacity="0.7"/>
+          <!-- splash droplets -->
+          <circle cx="262" cy="175" r="4" fill="#B5002A" opacity="0.5"/>
+          <circle cx="280" cy="185" r="3" fill="#B5002A" opacity="0.4"/>
+          <circle cx="255" cy="190" r="2.5" fill="#B5002A" opacity="0.5"/>
+          <circle cx="290" cy="170" r="2" fill="#B5002A" opacity="0.4"/>
+          <circle cx="268" cy="195" r="3.5" fill="#B5002A" opacity="0.45"/>
+          <!-- more droplets raining -->
+          <circle cx="248" cy="165" r="2" fill="#B5002A" opacity="0.3"/>
+          <circle cx="300" cy="160" r="2.5" fill="#B5002A" opacity="0.3"/>
+
+          <!-- LEFT HAND holding glass 1 -->
+          <g transform="translate(80,185)">
+            <!-- hand/wrist -->
+            <path d="M30,130 Q25,100 20,80 Q18,65 22,55" stroke-width="3"/>
+            <path d="M40,130 Q38,100 35,80 Q34,65 35,55" stroke-width="3"/>
+            <!-- fingers suggestion -->
+            <path d="M22,55 Q18,45 20,35" stroke-width="2.5"/>
+            <path d="M35,55 Q33,45 36,35" stroke-width="2.5"/>
+            <path d="M27,53 Q25,43 27,33" stroke-width="2.5"/>
+            <!-- CHAMPAGNE GLASS 1 -->
+            <!-- bowl -->
+            <path d="M10,0 Q12,-30 35,-35 Q58,-30 60,0 Z" stroke-width="2.2"/>
+            <!-- stem -->
+            <line x1="35" y1="0" x2="35" y2="50" stroke-width="2"/>
+            <!-- base -->
+            <line x1="18" y1="50" x2="52" y2="50" stroke-width="2.2"/>
+            <!-- bubbles in glass -->
+            <circle cx="28" cy="-15" r="2" fill="#B5002A" opacity="0.4"/>
+            <circle cx="38" cy="-20" r="1.5" fill="#B5002A" opacity="0.4"/>
+            <circle cx="32" cy="-8" r="1.5" fill="#B5002A" opacity="0.35"/>
+            <!-- liquid fill -->
+            <path d="M12,-5 Q15,-22 35,-26 Q55,-22 58,-5 Z" fill="#B5002A" opacity="0.12"/>
+          </g>
+
+          <!-- CENTER HANDS clinking glasses -->
+          <g transform="translate(165,210)">
+            <!-- hand left side of center -->
+            <path d="M20,110 Q18,85 15,68 Q13,55 16,45" stroke-width="3"/>
+            <path d="M32,110 Q31,85 30,68 Q29,55 31,45" stroke-width="3"/>
+            <path d="M16,45 Q13,36 15,27" stroke-width="2.5"/>
+            <path d="M31,45 Q30,36 32,27" stroke-width="2.5"/>
+            <path d="M23,44 Q21,35 23,26" stroke-width="2.5"/>
+            <!-- GLASS 2 (center-left) -->
+            <path d="M4,-8 Q6,-36 25,-40 Q44,-36 46,-8 Z" stroke-width="2.2"/>
+            <line x1="25" y1="-8" x2="25" y2="38" stroke-width="2"/>
+            <line x1="10" y1="38" x2="40" y2="38" stroke-width="2.2"/>
+            <circle cx="18" cy="-22" r="2" fill="#B5002A" opacity="0.4"/>
+            <circle cx="28" cy="-26" r="1.5" fill="#B5002A" opacity="0.35"/>
+            <path d="M6,-14 Q9,-30 25,-34 Q41,-30 44,-14 Z" fill="#B5002A" opacity="0.12"/>
+            <!-- CLINKING STAR BURST at top -->
+            <g transform="translate(25,-42)">
+              <line x1="0" y1="-10" x2="0" y2="-18" stroke-width="1.5"/>
+              <line x1="7" y1="-7" x2="12" y2="-13" stroke-width="1.5"/>
+              <line x1="-7" y1="-7" x2="-12" y2="-13" stroke-width="1.5"/>
+              <line x1="10" y1="0" x2="18" y2="0" stroke-width="1.5"/>
+              <line x1="-10" y1="0" x2="-18" y2="0" stroke-width="1.5"/>
+            </g>
+          </g>
+
+          <!-- RIGHT HAND holding glass 3 -->
+          <g transform="translate(255,195)">
+            <path d="M25,125 Q23,98 20,80 Q18,67 20,57" stroke-width="3"/>
+            <path d="M38,125 Q37,98 36,80 Q35,67 36,57" stroke-width="3"/>
+            <path d="M20,57 Q18,47 20,38" stroke-width="2.5"/>
+            <path d="M36,57 Q35,47 37,38" stroke-width="2.5"/>
+            <path d="M28,56 Q26,46 28,37" stroke-width="2.5"/>
+            <!-- GLASS 3 -->
+            <path d="M6,0 Q8,-28 28,-32 Q48,-28 50,0 Z" stroke-width="2.2"/>
+            <line x1="28" y1="0" x2="28" y2="46" stroke-width="2"/>
+            <line x1="12" y1="46" x2="44" y2="46" stroke-width="2.2"/>
+            <circle cx="20" cy="-16" r="2" fill="#B5002A" opacity="0.4"/>
+            <circle cx="32" cy="-20" r="1.5" fill="#B5002A" opacity="0.35"/>
+            <path d="M8,-6 Q11,-24 28,-28 Q45,-24 48,-6 Z" fill="#B5002A" opacity="0.12"/>
+          </g>
+
+          <!-- FAR RIGHT hand/glass 4 -->
+          <g transform="translate(320,205)">
+            <path d="M20,120 Q18,94 16,76 Q15,63 17,53" stroke-width="3"/>
+            <path d="M33,120 Q32,94 31,76 Q30,63 31,53" stroke-width="3"/>
+            <path d="M17,53 Q15,43 17,34" stroke-width="2.5"/>
+            <path d="M31,53 Q30,43 32,34" stroke-width="2.5"/>
+            <!-- GLASS 4 -->
+            <path d="M4,2 Q6,-24 24,-28 Q42,-24 44,2 Z" stroke-width="2.2"/>
+            <line x1="24" y1="2" x2="24" y2="44" stroke-width="2"/>
+            <line x1="10" y1="44" x2="38" y2="44" stroke-width="2.2"/>
+            <circle cx="17" cy="-14" r="2" fill="#B5002A" opacity="0.4"/>
+            <path d="M6,-4 Q9,-20 24,-24 Q39,-20 42,-4 Z" fill="#B5002A" opacity="0.12"/>
+          </g>
+
+          <!-- Scattered stars around the scene -->
+          <g stroke-width="1.2" opacity="0.6">
+            <path d="M60,155 L61.5,161 L68,161 L63,165 L64.5,171 L60,167.5 L55.5,171 L57,165 L52,161 L58.5,161 Z"/>
+            <path d="M340,120 L341.5,126 L348,126 L343,130 L344.5,136 L340,132.5 L335.5,136 L337,130 L332,126 L338.5,126 Z"/>
+            <path d="M155,150 L156,154 L160,154 L157,156.5 L158,161 L155,158.5 L152,161 L153,156.5 L150,154 L154,154 Z"/>
+          </g>
+          <!-- Heart near pour -->
+          <path d="M248,130 C248,130 242,125 242,121 C242,119 243.5,118 245,119 C246,119.5 247,121 248,122.5 C249,121 250,119.5 251,119 C252.5,118 254,119 254,121 C254,125 248,130 248,130Z" fill="#B5002A" opacity="0.7"/>
+
+        </g>
+      </svg>
+    </div>
+
+    <!-- DETAILS + RSVP ROW -->
+    <div class="hero-details-block">
+      <div class="details-left">
+        <div class="detail-when">July 17–19</div>
+        <div class="detail-address">4415 Judith Street<br>Rockville, MD</div>
+        <div class="detail-start-label">Let's start the<br>party at</div>
+        <div class="detail-time">6:00pm</div>
+        <div class="detail-dresscode">Dress Code:<br>PJs &amp; Farmer's<br>Market Chic</div>
       </div>
-      <div class="detail-card float-3">
-        <p class="detail-label">starts</p>
-        <p class="detail-value">6:00 PM Friday</p>
+      <div class="rsvp-block">
+        <span class="rsvp-label">RSVP</span>
+        <div class="rsvp-sub">by June 17th<br>through:</div>
+        <a href="#" class="rsvp-link">forms.gle/<br>e2p7obmJ3xLUx9cq8</a>
       </div>
     </div>
 
-    <div class="vibes-banner">
-      <span>✦ let's get comfy</span>
-      <span>✦ thrifty</span>
-      <span>✦ and crafty</span>
-      <span>✦ with love, Evey</span>
-      <span>✦ let's get comfy</span>
-      <span>✦ thrifty</span>
-      <span>✦ and crafty</span>
-      <span>✦ with love, Evey</span>
+    <!-- FOOTER STRIP -->
+    <div class="hero-footer-strip">
+      <div class="hf-comfy">
+        <!-- small heart -->
+        <svg width="14" height="12" viewBox="0 0 14 12"><path d="M7,10 C7,10 1,6 1,2.5 C1,1 2.2,0 3.5,1 C4.5,1.5 5.8,3 7,5 C8.2,3 9.5,1.5 10.5,1 C11.8,0 13,1 13,2.5 C13,6 7,10 7,10Z" fill="#B5002A"/></svg>
+        Let's get comfy, thrifty<br>and crafty
+      </div>
+      <div class="hf-love">With love,</div>
+      <div class="hf-evey">
+        Evey
+        <svg width="14" height="12" viewBox="0 0 14 12"><path d="M7,10 C7,10 1,6 1,2.5 C1,1 2.2,0 3.5,1 C4.5,1.5 5.8,3 7,5 C8.2,3 9.5,1.5 10.5,1 C11.8,0 13,1 13,2.5 C13,6 7,10 7,10Z" fill="#B5002A"/></svg>
+      </div>
     </div>
 
-    <div class="dress-code-card">
-      <p class="dc-label">dress code</p>
-      <p class="dc-value">PJs &amp; Farmer's Market Chic 🌻</p>
+    <!-- BOTTOM NAV LINKS -->
+    <div class="bottom-nav-links">
+      <a href="itinerary.html">Weekend Itinerary</a>
+      <span class="bottom-nav-sep">✦</span>
+      <a href="friday.html">Friday</a>
+      <span class="bottom-nav-sep">✦</span>
+      <a href="saturday.html">Saturday</a>
+      <span class="bottom-nav-sep">✦</span>
+      <a href="sunday.html">Sunday</a>
+      <span class="bottom-nav-sep">✦</span>
+      <a href="guests.html">The Girls</a>
+      <span class="bottom-nav-sep">✦</span>
+      <a href="packing.html">What to Bring</a>
+      <span class="bottom-nav-sep">✦</span>
+      <a href="movies.html">Movie Night</a>
+      <span class="bottom-nav-sep">✦</span>
+      <a href="menu.html">Snacks &amp; Eats</a>
     </div>
 
-    <div class="nav-cards">
-      <a href="itinerary.html" class="nav-card">
-        <span class="nc-emoji">🗓️</span>
-        <span>Weekend Plan</span>
-      </a>
-      <a href="guests.html" class="nav-card">
-        <span class="nc-emoji">👯‍♀️</span>
-        <span>The Girls</span>
-      </a>
-      <a href="movies.html" class="nav-card">
-        <span class="nc-emoji">🎬</span>
-        <span>Movie Night</span>
-      </a>
-      <a href="menu.html" class="nav-card">
-        <span class="nc-emoji">🍕</span>
-        <span>Snacks & Eats</span>
-      </a>
-      <a href="packing.html" class="nav-card">
-        <span class="nc-emoji">🎒</span>
-        <span>What to Bring</span>
-      </a>
-    </div>
-
-    <div class="bottom-doodles">
-      <span>♡</span><span>✦</span><span>♡</span><span>✦</span><span>♡</span>
-    </div>
   </main>
 
   <script src="main.js"></script>
