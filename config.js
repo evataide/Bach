@@ -4,5 +4,5 @@
 // ============================================
 
 const CONFIG = {
-  rsvpUrl: 'https://forms.gle/tmv11AztAjQAkCkg7',
+  rsvpUrl: 'rsvp.html',
 };

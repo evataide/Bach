@@ -1,6 +1,6 @@
-# 🌸 Evey's Bach Weekend Website
+# 🌸 Evey's Bachelorette 🌸 Weekend Website
 
-A whimsical, pink & red bachelorette weekend website for Evey's Bach Weekend — July 18–20, 2026 in Wheaton, MD!
+A whimsical, pink & red bachelorette weekend website for Evey's Bachelorette Weekend — July 18–20, 2026 in Wheaton, MD!
 
 ## Pages
 
@@ -9,7 +9,7 @@ A whimsical, pink & red bachelorette weekend website for Evey's Bach Weekend —
 - **friday.html** — Friday night deep dive
 - **saturday.html** — Saturday adventure deep dive
 - **sunday.html** — Sunday morning deep dive
-- **guests.html** — The Girls (edit with real guest info!)
+- **guests.html** — The Crew (edit with real guest info!)
 - **packing.html** — What to Bring (interactive checklist)
 - **movies.html** — Movie Night voting + suggestions
 - **menu.html** — Snacks & Eats for the whole weekend
@@ -37,7 +37,7 @@ Edit `movies.html` to update the movie options in the `.movie-grid` section.
 
 ## Deploying to GitHub Pages
 
-1. Create a new GitHub repository (e.g., `eveys-bach`)
+1. Create a new GitHub repository (e.g., `eveys-bachelorette`)
 2. Upload all files to the repository:
    ```
    index.html, itinerary.html, friday.html, saturday.html, sunday.html,
@@ -47,15 +47,15 @@ Edit `movies.html` to update the movie options in the `.movie-grid` section.
 4. Under "Source", select **Deploy from a branch**
 5. Choose **main** branch, **/ (root)** folder
 6. Click **Save**
-7. Your site will be live at: `https://yourusername.github.io/eveys-bach/`
+7. Your site will be live at: `https://yourusername.github.io/eveys-bachelorette/`
 
 ### Using GitHub CLI (fastest)
 ```bash
-# In the bach-site folder:
+# In the bachelorette-site folder:
 git init
 git add .
-git commit -m "🌸 Evey's Bach Weekend site"
-gh repo create eveys-bach --public --source=. --remote=origin --push
+git commit -m "🌸 Evey's Bachelorette 🌸 Weekend site"
+gh repo create eveys-bachelorette --public --source=. --remote=origin --push
 
 # Then enable Pages in GitHub Settings
 ```

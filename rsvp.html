@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSVP — Evey's Bachelorette 💌</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .rsvp-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 80px;
+    }
+    .rsvp-iframe-wrap {
+      background: rgba(255,255,255,0.7);
+      border: 2px solid var(--red);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 4px 4px 0px var(--red);
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .rsvp-iframe-wrap iframe {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+    @media (max-width: 600px) {
+      .rsvp-iframe-wrap iframe { height: 1100px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursor-trail"></div>
+  <div id="sparkles"></div>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">🌸 Evey's Bachelorette 🌸</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="itinerary.html">Itinerary</a>
+        <a href="friday.html">Friday</a>
+        <a href="saturday.html">Saturday</a>
+        <a href="sunday.html">Sunday</a>
+        <a href="guests.html">The Crew</a>
+        <a href="packing.html">What to Bring</a>
+        <a href="movies.html">Movie Night</a>
+        <a href="menu.html">Snacks & Eats</a>
+        <a href="rsvp.html" class="active">💌 RSVP</a>
+      </div>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html">Home</a>
+      <a href="itinerary.html">Itinerary</a>
+      <a href="friday.html">Friday</a>
+      <a href="saturday.html">Saturday</a>
+      <a href="sunday.html">Sunday</a>
+      <a href="guests.html">The Crew</a>
+      <a href="packing.html">What to Bring</a>
+      <a href="movies.html">Movie Night</a>
+      <a href="menu.html">Snacks & Eats</a>
+      <a href="rsvp.html">💌 RSVP</a>
+    </div>
+  </nav>
+
+  <main class="rsvp-page">
+    <p class="you-are-invited">we'd love to know you're coming 💌</p>
+    <h1 class="page-title">RSVP</h1>
+    <p class="page-subtitle" style="margin-bottom: 32px;">fill out the form below to let us know you'll be there ✨</p>
+
+    <div class="rsvp-iframe-wrap">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdRagMEDiLdmw5jdDfOjae5WhulEPQzwAY9Hzgqn_oITx3nJw/viewform?embedded=true"
+        height="955"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0">Loading…</iframe>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
