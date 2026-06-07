@@ -119,6 +119,17 @@ nav {
   color: var(--pink);
 }
 
+.nav-links a[href="rsvp.html"] {
+  background: #E8336A;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 2px 0 #b5184a;
+}
+.nav-links a[href="rsvp.html"]:hover {
+  background: #d4154c;
+  color: #fff;
+}
+
 .hamburger {
   display: none;
   background: none;
