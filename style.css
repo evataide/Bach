@@ -180,7 +180,7 @@ main {
 }
 .doodle-banner { top: 80px; left: 20px; font-size: 1.8rem; }
 .doodle-stars-tl { top: 100px; left: 80px; }
-.doodle-hearts-tr { top: 80px; right: 30px; font-size: 1.4rem; }
+.doodle-hearts-tr { top: 80px; right: 30px; font-size: 1.8rem; }
 
 .you-are-invited {
   font-family: var(--font-script);
