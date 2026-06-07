@@ -69,10 +69,9 @@ function createSparkle(x, y) {
   setTimeout(() => s.remove(), 800);
 }
 
-// ---- RSVP URL (update this one line to change all buttons) ----
-const RSVP_URL = 'https://forms.gle/tmv11AztAjQAkCkg7';
+// ---- RSVP URL (edit in config.js) ----
 document.querySelectorAll('.rsvp-hero-btn, .rsvp-float').forEach(el => {
-  el.href = RSVP_URL;
+  el.href = CONFIG.rsvpUrl;
 });
 
 // ---- FALLING PETALS ----
