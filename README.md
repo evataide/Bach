@@ -1,6 +1,6 @@
 # 🌸 Evey's Bach Weekend Website
 
-A whimsical, pink & red bachelorette weekend website for Evey's Bach Weekend — July 18–20, 2025 in Wheaton, MD!
+A whimsical, pink & red bachelorette weekend website for Evey's Bach Weekend — July 18–20, 2026 in Wheaton, MD!
 
 ## Pages
 
