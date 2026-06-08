@@ -13,7 +13,7 @@
   --red-dark: #8B001F;
   --cream: #FFF5F7;
   --white: #FFFFFF;
-  --font-script: 'Caveat', cursive;
+  --font-script: 'Pinyon Script', cursive;
   --font-serif: 'DM Serif Display', serif;
   --font-body: 'Quicksand', sans-serif;
 }
@@ -197,7 +197,7 @@ main {
   max-width: 720px;
   width: 100%;
   border-radius: 24px;
-  box-shadow: 4px 4px 0px var(--pink);
+  /* box-shadow: 4px 4px 0px var(--pink); */
   display: block;
   margin: 0 auto;
 }
