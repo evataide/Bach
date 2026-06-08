@@ -502,6 +502,7 @@ main {
   border-radius: 18px;
   padding: 18px 20px;
   transition: transform 0.2s;
+  position: relative;
 }
 .timeline-card:hover { transform: rotate(0.5deg) scale(1.01); }
 
@@ -525,14 +526,15 @@ main {
   color: var(--red-dark);
 }
 .location-badge {
-  display: inline-block;
+  position: absolute;
+  top: 14px;
+  right: 16px;
   font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   padding: 3px 10px;
   border-radius: 20px;
-  margin-bottom: 8px;
 }
 .location-badge.kensington {
   background: #fde8ef;
