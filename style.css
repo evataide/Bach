@@ -226,6 +226,11 @@ main {
   animation: wiggle 2s ease-in-out infinite;
   margin: 16px 0;
 }
+.hero-gif {
+  width: 160px;
+  margin: 12px auto 0;
+  display: block;
+}
 
 .hero-details {
   display: flex;
