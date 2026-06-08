@@ -546,6 +546,26 @@ main {
   color: #7c5cbf;
   border: 1.5px solid #c4aff0;
 }
+.venue-info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(192, 37, 61, 0.2);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: var(--red-dark);
+}
+.venue-info .venue-address { opacity: 0.7; }
+.venue-info .venue-sep { opacity: 0.35; }
+.venue-info .venue-link {
+  color: var(--red);
+  font-weight: 600;
+  text-decoration: none;
+}
+.venue-info .venue-link:hover { text-decoration: underline; }
 
 /* ======== GUEST CARDS ======== */
 .guest-grid {
