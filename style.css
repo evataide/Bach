@@ -976,12 +976,24 @@ footer {
 
 /* ======== SECTION HEADING ======== */
 .section-heading {
-  font-family: var(--font-script);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--red);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--red-dark);
   text-align: center;
-  margin: 32px 0 8px;
+  margin: 44px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-heading::before,
+.section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--red);
+  opacity: 0.25;
 }
 
 /* ======== OUTFIT CALLOUT ======== */
