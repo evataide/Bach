@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,6 +6,393 @@
   <title>Movie Night — Evey's Bachelorette 🎬</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .movie-card {
+      background: #fff;
+      border: 1.5px solid rgba(192, 37, 61, 0.15);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .movie-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(192, 37, 61, 0.14);
+      border-color: var(--red);
+    }
+
+    .movie-card.voted {
+      border-color: var(--red);
+    }
+
+    .voted-badge {
+      display: none;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+
+    .movie-card.voted .voted-badge { display: block; }
+
+    .movie-poster-wrap {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      background: #fde8ef;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .movie-poster {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .movie-poster-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      background: linear-gradient(135deg, #fde8ef, #fff0f3);
+    }
+
+    .movie-body {
+      padding: 10px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .movie-title {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--red-dark);
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+
+    .movie-genre {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      color: var(--red);
+      opacity: 0.7;
+      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .vote-btn {
+      margin-top: auto;
+      background: var(--pink);
+      border: 1.5px solid rgba(192, 37, 61, 0.2);
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--red-dark);
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      width: 100%;
+    }
+
+    .vote-btn:hover { background: #ffd6de; transform: scale(1.03); }
+
+    .vote-btn.voted {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
+    .vote-count {
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .suggested-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #7c5cbf;
+      background: #f3f0ff;
+      border: 1px solid #c4aff0;
+      border-radius: 20px;
+      padding: 2px 7px;
+      margin-bottom: 4px;
+      align-self: flex-start;
+    }
+
+    /* Typeahead suggest section */
+    .movie-suggest-section {
+      background: #fff;
+      border: 1.5px dashed rgba(192, 37, 61, 0.3);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      margin: 8px 0 24px;
+    }
+
+    .suggest-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+    }
+
+    .suggest-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      opacity: 0.65;
+      margin-bottom: 18px;
+    }
+
+    .typeahead-wrap {
+      position: relative;
+      max-width: 460px;
+      margin: 0 auto 12px;
+    }
+
+    .suggest-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .suggest-input {
+      flex: 1;
+      padding: 10px 16px;
+      border: 1.5px solid rgba(192, 37, 61, 0.25);
+      border-radius: 24px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--red-dark);
+      background: #fff9fa;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .suggest-input:focus { border-color: var(--red); }
+
+    .typeahead-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1.5px solid rgba(192, 37, 61, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(192, 37, 61, 0.1);
+      z-index: 100;
+      overflow: hidden;
+      display: none;
+    }
+
+    .typeahead-dropdown.open { display: block; }
+
+    .typeahead-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: background 0.1s;
+      border-bottom: 1px solid rgba(192, 37, 61, 0.06);
+    }
+
+    .typeahead-item:last-child { border-bottom: none; }
+    .typeahead-item:hover { background: #fff5f7; }
+
+    .typeahead-thumb {
+      width: 36px;
+      height: 54px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: #fde8ef;
+      flex-shrink: 0;
+    }
+
+    .typeahead-thumb-placeholder {
+      width: 36px;
+      height: 54px;
+      border-radius: 6px;
+      background: #fde8ef;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .typeahead-info { text-align: left; }
+
+    .typeahead-movie-title {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--red-dark);
+      line-height: 1.3;
+    }
+
+    .typeahead-movie-year {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--red);
+      opacity: 0.7;
+    }
+
+    .typeahead-empty {
+      padding: 14px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      opacity: 0.5;
+      text-align: center;
+    }
+
+    .btn-suggest {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 10px 22px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+
+    .btn-suggest:hover { opacity: 0.88; transform: scale(1.03); }
+    .btn-suggest:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    .suggest-name-input {
+      width: 100%;
+      max-width: 460px;
+      padding: 8px 16px;
+      border: 1.5px solid rgba(192, 37, 61, 0.2);
+      border-radius: 24px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--red-dark);
+      background: #fff9fa;
+      outline: none;
+      margin: 0 auto;
+      display: block;
+      transition: border-color 0.15s;
+    }
+
+    .suggest-name-input:focus { border-color: var(--red); }
+
+    .selected-movie-preview {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: #fff5f7;
+      border: 1.5px solid rgba(192, 37, 61, 0.2);
+      border-radius: 14px;
+      padding: 10px 14px;
+      max-width: 460px;
+      margin: 0 auto 12px;
+      text-align: left;
+    }
+
+    .selected-movie-preview.show { display: flex; }
+
+    .selected-poster-thumb {
+      width: 40px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .selected-movie-name {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--red-dark);
+    }
+
+    .selected-movie-meta {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      color: var(--red);
+      opacity: 0.7;
+    }
+
+    .clear-selection {
+      margin-left: auto;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      opacity: 0.4;
+      padding: 4px;
+      transition: opacity 0.15s;
+    }
+
+    .clear-selection:hover { opacity: 0.8; }
+
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--red-dark);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      padding: 10px 22px;
+      border-radius: 24px;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .movies-loading {
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      opacity: 0.5;
+      padding: 40px 0;
+      grid-column: 1 / -1;
+    }
+  </style>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
@@ -45,18 +432,11 @@
 
   <main>
     <div class="page-container">
-      <h1 class="page-title">Movie Night 🎬</h1>
-      <p class="page-subtitle">Vote for your favorites </p>
-      <!-- — most votes wins the queue! ✦ Click to vote ✦ -->
-
-      <div class="closing-card" style="margin: 32px auto; max-width: 520px;">
-        <span class="closing-emoji">🍿</span>
-        <p class="closing-text">voting opens soon!</p>
-        <p class="closing-sig">movie suggestions & voting will go live closer to the weekend — check back soon ✨</p>
+      <div class="day-hero">
+        <h1 class="page-title">Movie Night 🎬</h1>
+        <p class="page-subtitle">Vote for your favorites — most votes wins the queue! ✦</p>
       </div>
 
-      <!-- movie content coming soon! -->
-      <!--
       <div class="vibe-banner-inline">
         <span>✦ PJs on</span>
         <span>✦ snacks out</span>
@@ -64,130 +444,313 @@
         <span>✦ movies loading</span>
       </div>
 
-      <h2 class="section-heading">🍿 Vote for a Movie</h2>
-      <p style="font-family:var(--font-body); font-size:0.9rem; opacity:0.7; text-align:center; margin-bottom:20px;">
-        Tap a card to vote! Votes save in your browser.
-      </p>
+      <h2 class="section-heading">🍿 Cast Your Vote</h2>
 
-      <div class="movie-grid">
+      <div id="movie-grid" class="movie-grid">
+        <div class="movies-loading">loading movies ✨</div>
+      </div>
 
-        <!-- Horror / Thriller (for Evey who loves horror!) -->
-        <!-- <div class="movie-card" data-id="hereditary">
-          <span class="movie-emoji">😱</span>
-          <div class="movie-title">Hereditary</div>
-          <div class="movie-genre">Horror</div>
-          <span class="vote-count">0 votes</span>
+      <h2 class="section-heading">🎥 Suggest a Movie</h2>
+
+      <div class="movie-suggest-section">
+        <p class="suggest-title">Don't see your pick?</p>
+        <p class="suggest-subtitle">Search and add it — the crew will vote!</p>
+
+        <div class="typeahead-wrap">
+          <div class="suggest-row">
+            <input type="text" id="suggest-input" class="suggest-input" placeholder="Search for a movie..." maxlength="80" autocomplete="off">
+            <button id="suggest-btn" class="btn-suggest" disabled>Add ✦</button>
+          </div>
+          <div class="typeahead-dropdown" id="typeahead-dropdown"></div>
         </div>
 
-        <div class="movie-card" data-id="midsommar">
-          <span class="movie-emoji">🌸</span>
-          <div class="movie-title">Midsommar</div>
-          <div class="movie-genre">Folk Horror</div>
-          <span class="vote-count">0 votes</span>
+        <div class="selected-movie-preview" id="selected-preview">
+          <img class="selected-poster-thumb" id="selected-thumb" src="" alt="">
+          <div>
+            <div class="selected-movie-name" id="selected-name"></div>
+            <div class="selected-movie-meta" id="selected-meta"></div>
+          </div>
+          <button class="clear-selection" id="clear-selection" title="Clear">✕</button>
         </div>
 
-        <div class="movie-card" data-id="get-out">
-          <span class="movie-emoji">🏡</span>
-          <div class="movie-title">Get Out</div>
-          <div class="movie-genre">Horror / Thriller</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="the-menu">
-          <span class="movie-emoji">🍽️</span>
-          <div class="movie-title">The Menu</div>
-          <div class="movie-genre">Dark Comedy / Thriller</div>
-          <span class="vote-count">0 votes</span>
-        </div> -->
-
-        <!-- Romance / Comedy options -->
-        <!-- <div class="movie-card" data-id="bridesmaids">
-          <span class="movie-emoji">💐</span>
-          <div class="movie-title">Bridesmaids</div>
-          <div class="movie-genre">Rom-Com / Bachelorette Classic</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="mean-Crew">
-          <span class="movie-emoji">💅</span>
-          <div class="movie-title">Mean Crew</div>
-          <div class="movie-genre">Classic Comedy</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="knives-out">
-          <span class="movie-emoji">🔪</span>
-          <div class="movie-title">Knives Out</div>
-          <div class="movie-genre">Mystery / Comedy</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="parasite">
-          <span class="movie-emoji">🏠</span>
-          <div class="movie-title">Parasite</div>
-          <div class="movie-genre">Thriller / Dark Comedy</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="clueless">
-          <span class="movie-emoji">🛍️</span>
-          <div class="movie-title">Clueless</div>
-          <div class="movie-genre">90s Classic</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="spirited-away">
-          <span class="movie-emoji">🌊</span>
-          <div class="movie-title">Spirited Away</div>
-          <div class="movie-genre">Anime / Studio Ghibli</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="princess-mononoke">
-          <span class="movie-emoji">🐺</span>
-          <div class="movie-title">Princess Mononoke</div>
-          <div class="movie-genre">Anime / Studio Ghibli</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="howls">
-          <span class="movie-emoji">🔥</span>
-          <div class="movie-title">Howl's Moving Castle</div>
-          <div class="movie-genre">Anime / Studio Ghibli</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-      </div> -->
-
-      <!-- Suggest a movie -->
-      <!-- <div class="movie-suggest">
-        <p class="suggest-title">🎥 Suggest a Movie!</p>
-        <p style="font-family:var(--font-body); font-size:0.9rem; opacity:0.7; margin-bottom:14px;">
-          Don't see your pick? Add it here!
-        </p>
-        <input type="text" id="movie-suggest-input" class="suggest-input" placeholder="Movie title..." maxlength="60">
-        <button id="movie-suggest-btn" class="btn-pink">Add my suggestion ✦</button>
-      </div> -->
-
-      <!-- Suggested movies render here -->
-      <!-- <div id="suggested-movies" class="movie-grid"></div>
+        <input type="text" id="suggest-name" class="suggest-name-input" placeholder="Your name (optional)" maxlength="40">
+      </div>
 
       <div class="tip-card">
-        <p class="tip-label">🎬 Movie Night Setup</p>
+        <p class="tip-label">🎬 Movie Night Details</p>
         <ul class="tip-list">
-          <li>Saturday evening after we're back from Kensington &amp; pizza 🍕</li>
+          <li>Saturday evening after we're back from Kensington & pizza 🍕</li>
           <li>PJs required, crafts optional (but encouraged!)</li>
           <li>Full snack spread — check the <a href="menu.html">Snacks menu</a>!</li>
-          <li>The most-voted movie goes first. We might fit 2 if we're night owls! 🦉</li>
+          <li>The most-voted movie goes first — we might fit 2 if we're night owls! 🦉</li>
         </ul>
-      </div>  -->
-
+      </div>
     </div>
   </main>
 
+  <div class="toast" id="toast"></div>
+
   <footer>made with ♡ for Evey's bachelorette weekend 2026</footer>
   <a href="#" class="rsvp-float">✉️ RSVP</a>
+
   <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const { createClient } = supabase;
+    const db = createClient(CONFIG.supabase.url, CONFIG.supabase.key);
+    const TMDB_TOKEN = CONFIG.tmdb.token;
+    const TMDB_IMG = 'https://image.tmdb.org/t/p/w300';
+    const VOTED_KEY = 'bach_movie_votes';
+
+    // ── localStorage helpers ──────────────────────────────────────
+    function getVoted() {
+      try { return JSON.parse(localStorage.getItem(VOTED_KEY) || '[]'); }
+      catch { return []; }
+    }
+    function markVoted(id) {
+      const v = getVoted();
+      if (!v.includes(id)) v.push(id);
+      localStorage.setItem(VOTED_KEY, JSON.stringify(v));
+    }
+    function unmarkVoted(id) {
+      localStorage.setItem(VOTED_KEY, JSON.stringify(getVoted().filter(v => v !== id)));
+    }
+
+    // ── Toast ─────────────────────────────────────────────────────
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    // ── TMDB helpers ──────────────────────────────────────────────
+    async function tmdbSearch(query) {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US&page=1`,
+        { headers: { Authorization: `Bearer ${TMDB_TOKEN}`, 'Content-Type': 'application/json' } }
+      );
+      const json = await res.json();
+      return json.results || [];
+    }
+
+    async function tmdbFindByTitle(title) {
+      const results = await tmdbSearch(title);
+      return results[0] || null;
+    }
+
+    function tmdbGenres(ids) {
+      const map = {
+        28:'Action',18:'Drama',35:'Comedy',27:'Horror',10749:'Romance',
+        878:'Sci-Fi',53:'Thriller',16:'Animation',80:'Crime',14:'Fantasy',
+        9648:'Mystery',10751:'Family',36:'History',10402:'Music'
+      };
+      return (ids || []).slice(0, 2).map(id => map[id] || '').filter(Boolean).join(' / ');
+    }
+
+    // ── Auto-enrich existing movies missing posters ───────────────
+    async function enrichMovies(movies) {
+      const needEnrich = movies.filter(m => !m.poster_url);
+      for (const movie of needEnrich) {
+        const hit = await tmdbFindByTitle(movie.title);
+        if (!hit) continue;
+        const poster_url = hit.poster_path ? TMDB_IMG + hit.poster_path : null;
+        const genre = tmdbGenres(hit.genre_ids) || movie.genre;
+        await db.from('movies').update({ poster_url, genre }).eq('id', movie.id);
+        movie.poster_url = poster_url;
+        movie.genre = genre;
+      }
+    }
+
+    // ── Movie card builder ────────────────────────────────────────
+    function buildCard(movie) {
+      const hasVoted = getVoted().includes(movie.id);
+      const card = document.createElement('div');
+      card.className = 'movie-card' + (hasVoted ? ' voted' : '');
+      card.dataset.id = movie.id;
+
+      const posterHtml = movie.poster_url
+        ? `<img class="movie-poster" src="${movie.poster_url}" alt="${movie.title}" loading="lazy">`
+        : `<div class="movie-poster-placeholder">${movie.emoji || '🎬'}</div>`;
+
+      card.innerHTML = `
+        <span class="voted-badge">✓ voted</span>
+        <div class="movie-poster-wrap">${posterHtml}</div>
+        <div class="movie-body">
+          ${movie.is_suggested ? '<span class="suggested-tag">✦ suggested</span>' : ''}
+          <div class="movie-title">${movie.title}</div>
+          <div class="movie-genre">${movie.genre || ''}</div>
+          <button class="vote-btn ${hasVoted ? 'voted' : ''}" data-id="${movie.id}">
+            <span class="vote-label">${hasVoted ? '♡ voted' : '♡ vote'}</span>
+            <span class="vote-count">${movie.votes}</span>
+          </button>
+        </div>
+      `;
+
+      card.querySelector('.vote-btn').addEventListener('click', () => handleVote(movie.id, card));
+      return card;
+    }
+
+    // ── Vote toggle ───────────────────────────────────────────────
+    async function handleVote(id, card) {
+      const btn = card.querySelector('.vote-btn');
+      const countEl = btn.querySelector('.vote-count');
+      const labelEl = btn.querySelector('.vote-label');
+
+      if (getVoted().includes(id)) {
+        unmarkVoted(id);
+        card.classList.remove('voted');
+        btn.classList.remove('voted');
+        countEl.textContent = Math.max(0, parseInt(countEl.textContent) - 1);
+        labelEl.textContent = '♡ vote';
+        await db.rpc('decrement_votes', { movie_id: id });
+        showToast('vote removed 🩶');
+      } else {
+        markVoted(id);
+        card.classList.add('voted');
+        btn.classList.add('voted');
+        countEl.textContent = parseInt(countEl.textContent) + 1;
+        labelEl.textContent = '♡ voted';
+        await db.rpc('increment_votes', { movie_id: id });
+        showToast('vote counted! 🩷');
+      }
+    }
+
+    // ── Load + render movies ──────────────────────────────────────
+    async function loadMovies() {
+      const grid = document.getElementById('movie-grid');
+      const { data, error } = await db
+        .from('movies')
+        .select('*')
+        .order('votes', { ascending: false })
+        .order('created_at', { ascending: true });
+
+      if (error || !data) {
+        grid.innerHTML = '<p class="movies-loading">couldn\'t load movies — try refreshing 🌸</p>';
+        return;
+      }
+
+      await enrichMovies(data);
+
+      grid.innerHTML = '';
+      data.forEach(m => grid.appendChild(buildCard(m)));
+    }
+
+    // ── Typeahead ─────────────────────────────────────────────────
+    let selectedMovie = null;
+    let debounceTimer = null;
+
+    const suggestInput = document.getElementById('suggest-input');
+    const dropdown = document.getElementById('typeahead-dropdown');
+    const suggestBtn = document.getElementById('suggest-btn');
+    const preview = document.getElementById('selected-preview');
+
+    suggestInput.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      const q = suggestInput.value.trim();
+      if (!q) { closeDropdown(); return; }
+      debounceTimer = setTimeout(() => fetchSuggestions(q), 350);
+    });
+
+    suggestInput.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeDropdown();
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.typeahead-wrap')) closeDropdown();
+    });
+
+    async function fetchSuggestions(q) {
+      dropdown.innerHTML = '<div class="typeahead-empty">searching…</div>';
+      dropdown.classList.add('open');
+
+      const results = await tmdbSearch(q);
+      if (!results.length) {
+        dropdown.innerHTML = '<div class="typeahead-empty">no results — try a different title</div>';
+        return;
+      }
+
+      dropdown.innerHTML = '';
+      results.slice(0, 6).forEach(r => {
+        const year = r.release_date ? r.release_date.slice(0, 4) : '';
+        const thumbSrc = r.poster_path ? `https://image.tmdb.org/t/p/w92${r.poster_path}` : null;
+        const item = document.createElement('div');
+        item.className = 'typeahead-item';
+        item.innerHTML = thumbSrc
+          ? `<img class="typeahead-thumb" src="${thumbSrc}" alt="" loading="lazy">`
+          : `<div class="typeahead-thumb-placeholder">🎬</div>`;
+        item.innerHTML += `<div class="typeahead-info">
+          <div class="typeahead-movie-title">${r.title}</div>
+          ${year ? `<div class="typeahead-movie-year">${year}</div>` : ''}
+        </div>`;
+        item.addEventListener('click', () => selectMovie(r));
+        dropdown.appendChild(item);
+      });
+    }
+
+    function selectMovie(r) {
+      selectedMovie = r;
+      closeDropdown();
+      suggestInput.value = r.title;
+      suggestBtn.disabled = false;
+
+      const thumbSrc = r.poster_path ? `https://image.tmdb.org/t/p/w92${r.poster_path}` : null;
+      document.getElementById('selected-thumb').src = thumbSrc || '';
+      document.getElementById('selected-thumb').style.display = thumbSrc ? 'block' : 'none';
+      document.getElementById('selected-name').textContent = r.title;
+      document.getElementById('selected-meta').textContent = [
+        r.release_date ? r.release_date.slice(0, 4) : '',
+        tmdbGenres(r.genre_ids)
+      ].filter(Boolean).join(' · ');
+      preview.classList.add('show');
+    }
+
+    function closeDropdown() {
+      dropdown.classList.remove('open');
+      dropdown.innerHTML = '';
+    }
+
+    document.getElementById('clear-selection').addEventListener('click', () => {
+      selectedMovie = null;
+      suggestInput.value = '';
+      suggestBtn.disabled = true;
+      preview.classList.remove('show');
+    });
+
+    // ── Submit suggestion ─────────────────────────────────────────
+    suggestBtn.addEventListener('click', async () => {
+      if (!selectedMovie) return;
+      suggestBtn.disabled = true;
+      suggestBtn.textContent = 'Adding…';
+
+      const poster_url = selectedMovie.poster_path ? TMDB_IMG + selectedMovie.poster_path : null;
+      const genre = tmdbGenres(selectedMovie.genre_ids) || 'Suggested';
+      const nameVal = document.getElementById('suggest-name').value.trim();
+
+      const { error } = await db.from('movies').insert({
+        title: selectedMovie.title,
+        genre,
+        poster_url,
+        emoji: '🎬',
+        suggested_by: nameVal || null,
+        is_suggested: true,
+      });
+
+      suggestBtn.disabled = false;
+      suggestBtn.textContent = 'Add ✦';
+
+      if (error) { showToast('something went wrong, try again 🌸'); return; }
+
+      showToast(`"${selectedMovie.title}" added! 🎉`);
+      selectedMovie = null;
+      suggestInput.value = '';
+      document.getElementById('suggest-name').value = '';
+      preview.classList.remove('show');
+      await loadMovies();
+    });
+
+    loadMovies();
+  </script>
   <script src="main.js"></script>
 </body>
 </html>
