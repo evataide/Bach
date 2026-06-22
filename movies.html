@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -6,6 +6,251 @@
   <title>Movie Night — Evey's Bachelorette 🎬</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .movie-card {
+      background: #fff;
+      border: 1.5px solid rgba(192, 37, 61, 0.15);
+      border-radius: 16px;
+      padding: 20px 16px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      position: relative;
+    }
+
+    .movie-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(192, 37, 61, 0.12);
+      border-color: var(--red);
+    }
+
+    .movie-card.voted {
+      border-color: var(--red);
+      background: linear-gradient(135deg, #fff5f7, #fff);
+    }
+
+    .movie-card.voted::after {
+      content: '✓ voted';
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--red);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .movie-emoji {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .movie-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--red-dark);
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .movie-genre {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--red);
+      opacity: 0.7;
+      margin-bottom: 14px;
+      letter-spacing: 0.03em;
+    }
+
+    .vote-btn {
+      background: var(--pink);
+      border: 1.5px solid rgba(192, 37, 61, 0.2);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--red-dark);
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 auto;
+    }
+
+    .vote-btn:hover {
+      background: #ffd6de;
+      transform: scale(1.04);
+    }
+
+    .vote-btn.voted {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
+    .vote-count {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .movie-suggest-section {
+      background: #fff;
+      border: 1.5px dashed rgba(192, 37, 61, 0.3);
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      margin: 8px 0 24px;
+    }
+
+    .suggest-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+    }
+
+    .suggest-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      opacity: 0.65;
+      margin-bottom: 18px;
+    }
+
+    .suggest-row {
+      display: flex;
+      gap: 10px;
+      max-width: 460px;
+      margin: 0 auto 12px;
+      flex-wrap: wrap;
+    }
+
+    .suggest-input {
+      flex: 1;
+      min-width: 160px;
+      padding: 10px 16px;
+      border: 1.5px solid rgba(192, 37, 61, 0.25);
+      border-radius: 24px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--red-dark);
+      background: #fff9fa;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .suggest-input:focus {
+      border-color: var(--red);
+    }
+
+    .btn-suggest {
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 10px 22px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+
+    .btn-suggest:hover {
+      opacity: 0.88;
+      transform: scale(1.03);
+    }
+
+    .btn-suggest:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .suggest-name-input {
+      width: 100%;
+      max-width: 460px;
+      padding: 8px 16px;
+      border: 1.5px solid rgba(192, 37, 61, 0.2);
+      border-radius: 24px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--red-dark);
+      background: #fff9fa;
+      outline: none;
+      margin: 0 auto;
+      display: block;
+      transition: border-color 0.15s;
+    }
+
+    .suggest-name-input:focus {
+      border-color: var(--red);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--red-dark);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      padding: 10px 22px;
+      border-radius: 24px;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .movies-loading {
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      opacity: 0.5;
+      padding: 40px 0;
+    }
+
+    .suggested-tag {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #7c5cbf;
+      background: #f3f0ff;
+      border: 1px solid #c4aff0;
+      border-radius: 20px;
+      padding: 2px 8px;
+      margin-bottom: 8px;
+    }
+
+    .section-divider {
+      margin: 12px 0 4px;
+    }
+  </style>
 </head>
 <body>
   <div class="cursor" id="cursor"></div>
@@ -45,18 +290,11 @@
 
   <main>
     <div class="page-container">
-      <h1 class="page-title">Movie Night 🎬</h1>
-      <p class="page-subtitle">Vote for your favorites </p>
-      <!-- — most votes wins the queue! ✦ Click to vote ✦ -->
-
-      <div class="closing-card" style="margin: 32px auto; max-width: 520px;">
-        <span class="closing-emoji">🍿</span>
-        <p class="closing-text">voting opens soon!</p>
-        <p class="closing-sig">movie suggestions & voting will go live closer to the weekend — check back soon ✨</p>
+      <div class="day-hero">
+        <h1 class="page-title">Movie Night 🎬</h1>
+        <p class="page-subtitle">Vote for your favorites — most votes wins the queue! ✦</p>
       </div>
 
-      <!-- movie content coming soon! -->
-      <!--
       <div class="vibe-banner-inline">
         <span>✦ PJs on</span>
         <span>✦ snacks out</span>
@@ -64,130 +302,167 @@
         <span>✦ movies loading</span>
       </div>
 
-      <h2 class="section-heading">🍿 Vote for a Movie</h2>
-      <p style="font-family:var(--font-body); font-size:0.9rem; opacity:0.7; text-align:center; margin-bottom:20px;">
-        Tap a card to vote! Votes save in your browser.
-      </p>
+      <h2 class="section-heading">🍿 Cast Your Vote</h2>
 
-      <div class="movie-grid">
+      <div id="movie-grid" class="movie-grid">
+        <div class="movies-loading">loading movies ✨</div>
+      </div>
 
-        <!-- Horror / Thriller (for Evey who loves horror!) -->
-        <!-- <div class="movie-card" data-id="hereditary">
-          <span class="movie-emoji">😱</span>
-          <div class="movie-title">Hereditary</div>
-          <div class="movie-genre">Horror</div>
-          <span class="vote-count">0 votes</span>
+      <h2 class="section-heading section-divider">🎥 Suggest a Movie</h2>
+
+      <div class="movie-suggest-section">
+        <p class="suggest-title">Don't see your pick?</p>
+        <p class="suggest-subtitle">Add it to the list and let the crew vote!</p>
+        <div class="suggest-row">
+          <input type="text" id="suggest-title" class="suggest-input" placeholder="Movie title..." maxlength="80">
+          <button id="suggest-btn" class="btn-suggest">Add ✦</button>
         </div>
-
-        <div class="movie-card" data-id="midsommar">
-          <span class="movie-emoji">🌸</span>
-          <div class="movie-title">Midsommar</div>
-          <div class="movie-genre">Folk Horror</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="get-out">
-          <span class="movie-emoji">🏡</span>
-          <div class="movie-title">Get Out</div>
-          <div class="movie-genre">Horror / Thriller</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="the-menu">
-          <span class="movie-emoji">🍽️</span>
-          <div class="movie-title">The Menu</div>
-          <div class="movie-genre">Dark Comedy / Thriller</div>
-          <span class="vote-count">0 votes</span>
-        </div> -->
-
-        <!-- Romance / Comedy options -->
-        <!-- <div class="movie-card" data-id="bridesmaids">
-          <span class="movie-emoji">💐</span>
-          <div class="movie-title">Bridesmaids</div>
-          <div class="movie-genre">Rom-Com / Bachelorette Classic</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="mean-Crew">
-          <span class="movie-emoji">💅</span>
-          <div class="movie-title">Mean Crew</div>
-          <div class="movie-genre">Classic Comedy</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="knives-out">
-          <span class="movie-emoji">🔪</span>
-          <div class="movie-title">Knives Out</div>
-          <div class="movie-genre">Mystery / Comedy</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="parasite">
-          <span class="movie-emoji">🏠</span>
-          <div class="movie-title">Parasite</div>
-          <div class="movie-genre">Thriller / Dark Comedy</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="clueless">
-          <span class="movie-emoji">🛍️</span>
-          <div class="movie-title">Clueless</div>
-          <div class="movie-genre">90s Classic</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="spirited-away">
-          <span class="movie-emoji">🌊</span>
-          <div class="movie-title">Spirited Away</div>
-          <div class="movie-genre">Anime / Studio Ghibli</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="princess-mononoke">
-          <span class="movie-emoji">🐺</span>
-          <div class="movie-title">Princess Mononoke</div>
-          <div class="movie-genre">Anime / Studio Ghibli</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-        <div class="movie-card" data-id="howls">
-          <span class="movie-emoji">🔥</span>
-          <div class="movie-title">Howl's Moving Castle</div>
-          <div class="movie-genre">Anime / Studio Ghibli</div>
-          <span class="vote-count">0 votes</span>
-        </div>
-
-      </div> -->
-
-      <!-- Suggest a movie -->
-      <!-- <div class="movie-suggest">
-        <p class="suggest-title">🎥 Suggest a Movie!</p>
-        <p style="font-family:var(--font-body); font-size:0.9rem; opacity:0.7; margin-bottom:14px;">
-          Don't see your pick? Add it here!
-        </p>
-        <input type="text" id="movie-suggest-input" class="suggest-input" placeholder="Movie title..." maxlength="60">
-        <button id="movie-suggest-btn" class="btn-pink">Add my suggestion ✦</button>
-      </div> -->
-
-      <!-- Suggested movies render here -->
-      <!-- <div id="suggested-movies" class="movie-grid"></div>
+        <input type="text" id="suggest-name" class="suggest-name-input" placeholder="Your name (optional)" maxlength="40">
+      </div>
 
       <div class="tip-card">
-        <p class="tip-label">🎬 Movie Night Setup</p>
+        <p class="tip-label">🎬 Movie Night Details</p>
         <ul class="tip-list">
-          <li>Saturday evening after we're back from Kensington &amp; pizza 🍕</li>
+          <li>Saturday evening after we're back from Kensington & pizza 🍕</li>
           <li>PJs required, crafts optional (but encouraged!)</li>
           <li>Full snack spread — check the <a href="menu.html">Snacks menu</a>!</li>
-          <li>The most-voted movie goes first. We might fit 2 if we're night owls! 🦉</li>
+          <li>The most-voted movie goes first — we might fit 2 if we're night owls! 🦉</li>
         </ul>
-      </div>  -->
-
+      </div>
     </div>
   </main>
+
+  <div class="toast" id="toast"></div>
 
   <footer>made with ♡ for Evey's bachelorette weekend 2026</footer>
   <a href="#" class="rsvp-float">✉️ RSVP</a>
   <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const { createClient } = supabase;
+    const db = createClient(CONFIG.supabase.url, CONFIG.supabase.key);
+
+    const VOTED_KEY = 'bach_movie_votes';
+
+    function getVoted() {
+      try { return JSON.parse(localStorage.getItem(VOTED_KEY) || '[]'); }
+      catch { return []; }
+    }
+
+    function markVoted(id) {
+      const voted = getVoted();
+      if (!voted.includes(id)) voted.push(id);
+      localStorage.setItem(VOTED_KEY, JSON.stringify(voted));
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function buildCard(movie) {
+      const voted = getVoted();
+      const hasVoted = voted.includes(movie.id);
+      const card = document.createElement('div');
+      card.className = 'movie-card' + (hasVoted ? ' voted' : '');
+      card.dataset.id = movie.id;
+
+      card.innerHTML = `
+        ${movie.is_suggested ? '<span class="suggested-tag">✦ suggested</span><br>' : ''}
+        <span class="movie-emoji">${movie.emoji || '🎬'}</span>
+        <div class="movie-title">${movie.title}</div>
+        <div class="movie-genre">${movie.genre || ''}</div>
+        <button class="vote-btn ${hasVoted ? 'voted' : ''}" data-id="${movie.id}">
+          ${hasVoted ? '♡ voted' : '♡ vote'} <span class="vote-count">${movie.votes}</span>
+        </button>
+      `;
+
+      card.querySelector('.vote-btn').addEventListener('click', () => handleVote(movie.id, card));
+      return card;
+    }
+
+    function unmarkVoted(id) {
+      const voted = getVoted().filter(v => v !== id);
+      localStorage.setItem(VOTED_KEY, JSON.stringify(voted));
+    }
+
+    async function handleVote(id, card) {
+      const voted = getVoted();
+      const btn = card.querySelector('.vote-btn');
+      const countEl = btn.querySelector('.vote-count');
+
+      if (voted.includes(id)) {
+        unmarkVoted(id);
+        card.classList.remove('voted');
+        btn.classList.remove('voted');
+        countEl.textContent = Math.max(0, parseInt(countEl.textContent) - 1);
+        btn.childNodes[0].textContent = '♡ vote ';
+        await db.rpc('decrement_votes', { movie_id: id });
+        showToast('vote removed 🩶');
+      } else {
+        markVoted(id);
+        card.classList.add('voted');
+        btn.classList.add('voted');
+        countEl.textContent = parseInt(countEl.textContent) + 1;
+        btn.childNodes[0].textContent = '♡ voted ';
+        await db.rpc('increment_votes', { movie_id: id });
+        showToast('vote counted! 🩷');
+      }
+    }
+
+    async function loadMovies() {
+      const grid = document.getElementById('movie-grid');
+      const { data, error } = await db
+        .from('movies')
+        .select('*')
+        .order('votes', { ascending: false })
+        .order('created_at', { ascending: true });
+
+      if (error || !data) {
+        grid.innerHTML = '<p class="movies-loading">couldn\'t load movies — try refreshing 🌸</p>';
+        return;
+      }
+
+      grid.innerHTML = '';
+      data.forEach(m => grid.appendChild(buildCard(m)));
+    }
+
+    document.getElementById('suggest-btn').addEventListener('click', async () => {
+      const titleEl = document.getElementById('suggest-title');
+      const nameEl = document.getElementById('suggest-name');
+      const title = titleEl.value.trim();
+      if (!title) { showToast('enter a movie title first! 🎬'); return; }
+
+      const btn = document.getElementById('suggest-btn');
+      btn.disabled = true;
+      btn.textContent = 'Adding...';
+
+      const { error } = await db.from('movies').insert({
+        title,
+        suggested_by: nameEl.value.trim() || null,
+        emoji: '🎬',
+        genre: 'Suggested',
+        is_suggested: true,
+      });
+
+      btn.disabled = false;
+      btn.textContent = 'Add ✦';
+
+      if (error) {
+        showToast('something went wrong, try again 🌸');
+        return;
+      }
+
+      titleEl.value = '';
+      nameEl.value = '';
+      showToast(`"${title}" added! 🎉`);
+      await loadMovies();
+    });
+
+    loadMovies();
+  </script>
   <script src="main.js"></script>
 </body>
 </html>
