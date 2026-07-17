@@ -613,6 +613,25 @@ main {
   margin-bottom: 12px;
   display: block;
 }
+.guest-avatar-wrap {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 12px;
+  border: 3px solid var(--pink);
+  box-shadow: 0 4px 12px rgba(192, 37, 61, 0.15);
+  flex-shrink: 0;
+}
+.guest-avatar-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--photo-pos, center top);
+  transform: scale(var(--photo-zoom, 1));
+  transform-origin: center top;
+  display: block;
+}
 .guest-name {
   font-family: var(--font-script);
   font-size: 1.8rem;
@@ -644,6 +663,81 @@ main {
   border-radius: 10px;
   padding: 6px 10px;
   display: inline-block;
+}
+.guest-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+  width: 100%;
+  margin-top: 4px;
+}
+.guest-detail {
+  font-family: var(--font-body);
+  font-size: 0.83rem;
+  color: var(--red-dark);
+  line-height: 1.4;
+}
+.detail-label {
+  font-weight: 700;
+  color: var(--red);
+  text-transform: lowercase;
+  letter-spacing: 0.03em;
+  margin-right: 4px;
+}
+.insta-link {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 600;
+}
+.insta-link:hover { text-decoration: underline; }
+.sleepover-badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #5a4a8a;
+  background: #f0ecff;
+  border: 1.5px solid #c4aff0;
+  border-radius: 20px;
+  padding: 2px 9px;
+  margin-top: 8px;
+  align-self: center;
+}
+.guest-card-bonus {
+  background: rgba(255,255,255,0.5);
+  border: 2px dashed rgba(100,100,100,0.25);
+  border-radius: 24px;
+  padding: 20px 24px;
+  text-align: center;
+  transition: transform 0.25s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.guest-card-bonus:hover { transform: scale(1.02); }
+.bonus-label {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 10px;
+}
+.bonus-note {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: #777;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin-top: 10px;
 }
 
 /* ======== PACKING LIST ======== */
